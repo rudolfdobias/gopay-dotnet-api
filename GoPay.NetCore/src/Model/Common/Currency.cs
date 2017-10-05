@@ -21,7 +21,7 @@ namespace GoPay.Common
         
         public static int GetCode(this Enum value)
         {
-            FieldInfo fieldInfo = value.GetType().GetField(value.ToString());
+            FieldInfo fieldInfo = value.GetType().GetRuntimeField(value.ToString());
             var attribute = (CurrencyCode)fieldInfo.GetCustomAttribute(typeof(CurrencyCode));
             return attribute.Code;
         }

@@ -23,7 +23,7 @@ namespace GoPay.Account
 
         public static string GetType(this Enum value)
         {
-            FieldInfo fieldInfo = value.GetType().GetField(value.ToString());
+            FieldInfo fieldInfo = value.GetType().GetRuntimeField(value.ToString());
             var attribute = (ContentType)fieldInfo.GetCustomAttribute(typeof(ContentType));
             return attribute.Type;
         }

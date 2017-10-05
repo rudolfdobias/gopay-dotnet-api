@@ -30,7 +30,7 @@ namespace GoPay.Common
 
         public static string GetCaption(this Enum value)
         {
-            FieldInfo fieldInfo = value.GetType().GetField(value.ToString());
+            FieldInfo fieldInfo = value.GetType().GetRuntimeField(value.ToString());
             var attribute = (GroupCaption)fieldInfo.GetCustomAttribute(typeof(GroupCaption));
             return attribute.Caption;
         }
@@ -38,7 +38,7 @@ namespace GoPay.Common
 
         public static PaymentInstrument[] GetEnumSetPaymentInstruments(this Enum value)
         {
-            FieldInfo fieldInfo = value.GetType().GetField(value.ToString());
+            FieldInfo fieldInfo = value.GetType().GetRuntimeField(value.ToString());
             var attribute = (EnumSetPaymentInstruments)fieldInfo.GetCustomAttribute(typeof(EnumSetPaymentInstruments));
             return attribute.EnumSetInstruments;
         }

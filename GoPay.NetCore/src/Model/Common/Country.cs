@@ -264,7 +264,7 @@ namespace GoPay.Common
 
         public static int GetCountryCode(this Enum value)
         {
-            FieldInfo fieldInfo = value.GetType().GetField(value.ToString());
+            FieldInfo fieldInfo = value.GetType().GetRuntimeField(value.ToString());
             var attribute = (CountryCode)fieldInfo.GetCustomAttribute(typeof(CountryCode));
             return attribute.Code;
         }
