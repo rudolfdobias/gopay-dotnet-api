@@ -206,7 +206,7 @@ namespace GoPay
         /// <exception cref="ApplicationException"></exception>
         public async Task<Payment> PaymentStatusAsync(long id)
         {
-            var restRequest = CreateRestRequest(@"/payments/payment/{id}", "application/x-www-form-urlencoded");
+            var restRequest = CreateRestRequest(@"/payments/payment/{id}", "application/x-www-form-urlencoded", null, Method.GET);
             restRequest.AddParameter("id", id, ParameterType.UrlSegment);
             var response = await Client.ExecuteAsync(restRequest);
             return await Task.Factory.StartNew(() => Deserialize<Payment>(response.Content));
